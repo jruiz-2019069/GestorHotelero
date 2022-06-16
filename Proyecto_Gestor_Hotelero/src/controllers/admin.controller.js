@@ -3,9 +3,11 @@
 const Admin = require('../models/admin.model');
 const Manager = require('../models/manager.model');
 const Client = require('../models/client.model');
+const Hotel = require('../models/hotel.model');
 const jwt = require('../services/jwt');
-const {dataObligatory, dencryptPassword} = require('../utils/validate');
+const {dataObligatory, dencryptPassword, encryptPassword} = require('../utils/validate');
 
+//FUNCIÓN PARA LOGEARSE
 exports.login = async(req, res)=>{
     try{
         const params = req.body;
@@ -24,10 +26,10 @@ exports.login = async(req, res)=>{
             let client = await Client.findOne({username: params.username}); 
             if(admin && await dencryptPassword(params.password, admin.password)){
                 const token = await jwt.createToken(admin);
-                return res.status(200).send({token, client, message: 'Entering the system...'});
+                return res.status(200).send({token, admin, message: 'Entering the system...'});
             }else if(manager && await dencryptPassword(params.password, manager.password)){
                 const token = await jwt.createToken(manager);
-                return res.status(200).send({token, client, message: 'Entering the system...'});
+                return res.status(200).send({token, manager, message: 'Entering the system...'});
             }else if(client && await dencryptPassword(params.password, client.password)){
                 const token = await jwt.createToken(client);
                 return res.status(200).send({token, client, message: 'Entering the system...'});
@@ -36,6 +38,83 @@ exports.login = async(req, res)=>{
             }
         }
     }catch(err){
+        console.log(err);
+        return err;
+    }
+}
+
+//FUNCIÓN PARA CREAR UN ADMINISTRADOR
+exports.createAdmin = async (req, res) => {
+    try {
+        const params = req.body;
+        const data = {
+            name: params.name,
+            username: params.username,
+            password: params.password,
+            role: "ADMIN"
+        }
+        const msg = await dataObligatory(data);
+        if(msg){
+            return res.status(400).send(msg);
+        }else{
+            const username = await Admin.findOne({username: params.username});
+            if(username){
+                return res.status(400).send({message: "This username already exist."});
+            }else{
+                data.password = await encryptPassword(data.password);
+                let admin = new Admin(data);
+                await admin.save();
+                return res.status(200).send({message: "Admin created succesfully."});
+            }
+        }
+    } catch (err) {
+        console.log(err);
+        return err;
+    }
+}
+
+//FUNCIÓN PARA CREAR UN HOTEL Y MANAGER DEL HOTEL
+exports.createHotel = async (req, res) => {
+    try {
+        const params = req.body;
+        const dataManager = {
+            name: params.name,
+            username: params.username,
+            password: params.password,
+            role: "MANAGER"
+        }
+        const dataHotel = {
+            nameHotel: params.nameHotel,
+            direction: params.direction,
+            phone: params.phone,
+            email: params.email,
+            request: 0
+        }
+        const msgManager = await dataObligatory(dataManager);
+        const msgHotel = await dataObligatory(dataHotel);
+        if(msgManager || msgHotel){
+            return res.status(400).send(`${msgManager} \n ${msgHotel}`);
+        }else{
+            const usernameManager = await Manager.findOne({username: params.username});
+            if(usernameManager){
+                return res.status(400).send({message: "The username of manager already exist."});
+            }else{
+                dataManager.password = await encryptPassword(dataManager.password);
+                let manager = new Manager(dataManager);
+                await manager.save();
+                //Parte dos de creación del hotel
+                const nameHotel = await Hotel.findOne({nameHotel: params.nameHotel});
+                if(nameHotel){
+                    return res.status(400).send({message: "The hotel name already exist."});
+                }else{
+                    dataHotel.idManager = manager._id;
+                    let hotel = new Hotel(dataHotel);
+                    await hotel.save();
+                    return res.status(200).send({message: "Hotel and Manager created succesfully."});
+                }
+            }
+        }
+    } catch (err) {
         console.log(err);
         return err;
     }
