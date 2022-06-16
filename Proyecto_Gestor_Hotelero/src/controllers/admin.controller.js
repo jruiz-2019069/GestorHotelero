@@ -84,7 +84,7 @@ exports.createHotel = async (req, res) => {
             role: "MANAGER"
         }
         const dataHotel = {
-            nameHotel: params.nameHotel,
+            nameHotel: params.nameHotel.toUpperCase(),
             direction: params.direction,
             phone: params.phone,
             email: params.email,
@@ -96,23 +96,50 @@ exports.createHotel = async (req, res) => {
             return res.status(400).send(`${msgManager} \n ${msgHotel}`);
         }else{
             const usernameManager = await Manager.findOne({username: params.username});
-            if(usernameManager){
-                return res.status(400).send({message: "The username of manager already exist."});
+            const nameHotel = await Hotel.findOne({nameHotel: dataHotel.nameHotel});
+            if(usernameManager || nameHotel){
+                return res.status(400).send({message: "The username of manager or hotel already exist."});
             }else{
                 dataManager.password = await encryptPassword(dataManager.password);
                 let manager = new Manager(dataManager);
                 await manager.save();
                 //Parte dos de creación del hotel
-                const nameHotel = await Hotel.findOne({nameHotel: params.nameHotel});
-                if(nameHotel){
-                    return res.status(400).send({message: "The hotel name already exist."});
-                }else{
-                    dataHotel.idManager = manager._id;
-                    let hotel = new Hotel(dataHotel);
-                    await hotel.save();
-                    return res.status(200).send({message: "Hotel and Manager created succesfully."});
-                }
+                dataHotel.idManager = manager._id;
+                let hotel = new Hotel(dataHotel);
+                await hotel.save();
+                return res.status(200).send({message: "Hotel and Manager created succesfully."});
             }
+        }
+    } catch (err) {
+        console.log(err);
+        return err;
+    }
+}
+
+//FUNCIÓN PARA OBTENER TODOS LOS MANAGERS Y CLIENTS
+exports.getManagersAndClients = async (req, res) => {
+    try {
+        const managers = await Manager.find();
+        const clients = await Client.find();
+        if(managers || clients){
+            return res.status(200).send({managers, clients});
+        }else{
+            return res.status(404).send({message: "Users not found."});
+        }
+    } catch (err) {
+        console.log(err);
+        return err;
+    }
+}
+
+//FUNCIÓN PARA OBTENER TODOS LOS HOTELES DE LA APLICACIÓN
+exports.getHotels = async (req, res) => {
+    try {
+        const hotels = await Hotel.find();
+        if(hotels){
+            return res.status(200).send({hotels});
+        }else{
+            return res.status(400).send({message: "There is not hotels to show."});
         }
     } catch (err) {
         console.log(err);

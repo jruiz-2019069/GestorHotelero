@@ -6,9 +6,9 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const clientRoutes = require('../src/routes/client.routes');
 const adminRoutes = require('../src/routes/admin.routes');
+const managerRoutes = require('../src/routes/manager.routes');
 
 //Creación del servidor
-
 const app = express();
 
 //Configuraciones del servidor de express
@@ -22,5 +22,6 @@ app.use(cors());
 
 app.use('/client', clientRoutes);
 app.use('/admin', adminRoutes);
+app.use('/manager', managerRoutes);
 
 module.exports = app;
