@@ -95,3 +95,52 @@ exports.createEvent = async (req, res) => {
         return err;
     }
 }
+
+exports.updateEvent = async(req, res) =>{
+    try {
+        const params = req.body;
+        const idEvent = req.params.idEvent
+        const data = {
+            name: params.name.toUpperCase(),
+            type: params.type,
+            description: params.description,
+        }
+        const event = await Event.findOne({_id: idEvent});
+        const msg = await dataObligatory(data);
+        if(msg){
+            return res.send(msg);
+        }else{
+            if(event.name != params.name){
+                const eventFound = await Event.findOne({idHotel: event.idHotel ,name: params.name.toUpperCase()});
+                if(eventFound){
+                    return res.status(400).send({message:'Event name already exists'});
+                }else{
+                    const eventUpdated = await Event.findOneAndUpdate({_id: idEvent}, data, {new:true});
+                    return res.status(200).send({message:'Event updated', eventUpdated});
+                }
+            }else{
+                const eventUpdated = await Event.findOneAndUpdate({_id: idEvent}, data, {new:true});
+                return res.status(200).send({message:'Event updated', eventUpdated});
+            }
+        }
+    }catch(err){
+        console.log(err);
+        return err;
+    }
+}
+
+exports.deleteEvent = async(req, res)=>{
+    try{
+        const idEvent = req.params.idEvent;
+        const event = await Event.findOne({_id: idEvent});
+        if(event){
+            const eventDeleted = await Event.findOneAndDelete({_id: idEvent});
+            return res.status(200).send({message: "Event deleted successfully.", eventDeleted});
+        }else{
+            res.status(404).send({message:'Event not found'});
+        }
+    }catch(err){
+        console.log(err);
+        return err;
+    }
+}

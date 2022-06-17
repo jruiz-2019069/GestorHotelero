@@ -9,5 +9,7 @@ api.post("/createRoom/:idHotel", [middleware.isLoged, middleware.isManager], man
 api.get("/getRooms/:idHotel", [middleware.isLoged, middleware.isManager], managerController.getRooms);
 api.get("/getAvaibleRooms/:idHotel", [middleware.isLoged, middleware.isManager], managerController.getAvaibleRooms);
 api.post("/createEvent/:idHotel", [middleware.isLoged, middleware.isManager], managerController.createEvent);
+api.put("/updateEvent/:idEvent", [middleware.isLoged, middleware.isManager], managerController.updateEvent);
+api.delete("/deleteEvent/:idEvent", [middleware.isLoged, middleware.isManager], managerController.deleteEvent);
 
 module.exports = api;
