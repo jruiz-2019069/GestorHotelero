@@ -19,7 +19,7 @@ exports.login = async(req, res)=>{
         const msg = await dataObligatory(data);
 
         if(msg){
-            return res.status(400).send(msg);
+            return res.status(400).send({msg});
         }else{
             let admin = await Admin.findOne({username: params.username});
             let manager = await Manager.findOne({username: params.username});
@@ -55,7 +55,7 @@ exports.createAdmin = async (req, res) => {
         }
         const msg = await dataObligatory(data);
         if(msg){
-            return res.status(400).send(msg);
+            return res.status(400).send({msg});
         }else{
             const username = await Admin.findOne({username: params.username});
             if(username){

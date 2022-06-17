@@ -24,7 +24,7 @@ exports.register = async(req, res)=>{
         const msg = await dataObligatory(data);
         
         if(msg){
-            return res.status(400).send(msg);
+            return res.status(400).send({msg});
         }else{
             const usernameFound = await Client.findOne({username: params.username});
             if(usernameFound){

@@ -7,6 +7,7 @@ const bodyParser = require('body-parser');
 const clientRoutes = require('../src/routes/client.routes');
 const adminRoutes = require('../src/routes/admin.routes');
 const managerRoutes = require('../src/routes/manager.routes');
+const hotelRoutes = require('../src/routes/hotel.routes');
 
 //Creación del servidor
 const app = express();
@@ -23,5 +24,6 @@ app.use(cors());
 app.use('/client', clientRoutes);
 app.use('/admin', adminRoutes);
 app.use('/manager', managerRoutes);
+app.use('/hotel', hotelRoutes)
 
 module.exports = app;
