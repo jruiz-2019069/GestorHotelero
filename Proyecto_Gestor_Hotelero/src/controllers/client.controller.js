@@ -41,3 +41,40 @@ exports.register = async(req, res)=>{
         return err;
     }
 }
+
+//Función para actualizar a un cliente
+exports.updateClient = async(req, res)=>{
+    try {
+        const idClient = req.params.idLoged;
+        const params = req.body;
+        const data = {
+            name: params.name,
+            lastname: params.lastname,
+            email: params.email,
+            phone: params.phone,
+            username: params.username
+        }
+        const client = await Client.findOne({_id: idClient});
+        const msg = await dataObligatory(data);
+        if(msg){
+            return res.send(msg);
+        }else{
+            if(client.username != params.username){
+                const clientFound = await Client.findOne({username: params.username}) 
+                if(clientFound){
+                    return res.status(400).send({message: 'This username already exist.'});
+                }else{
+                    const clientUpdated = await Client.findOneAndUpdate({_id: idClient}, data, {new:true});
+                    return res.status(200).send({message:'User updated', clientUpdated});
+                }
+            }else{
+                const clientUpdated = await Client.findOneAndUpdate({_id: idClient}, data, {new:true});
+                return res.status(200).send({message:'User updated', clientUpdated});
+
+            }
+        }
+    }catch (err) {
+        console.log(err);
+        return err;   
+    }
+}

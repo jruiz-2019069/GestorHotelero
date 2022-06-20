@@ -1,0 +1,755 @@
+{
+	"info": {
+		"_postman_id": "52ceb794-8034-453d-8e2e-808ad3270bb2",
+		"name": "Gestor Hotelero",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Client",
+			"item": [
+				{
+					"name": "Test Client Controller",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/client/testClientController",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"client",
+								"testClientController"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Alex",
+									"type": "default"
+								},
+								{
+									"key": "lastname",
+									"value": "Ramos",
+									"type": "default"
+								},
+								{
+									"key": "email",
+									"value": "aramos@gmail.com",
+									"type": "default"
+								},
+								{
+									"key": "phone",
+									"value": "88888888",
+									"type": "default"
+								},
+								{
+									"key": "username",
+									"value": "dPerez",
+									"type": "default"
+								},
+								{
+									"key": "password",
+									"value": "123",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3000/client/register",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"client",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Client",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "\"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2MmFiY2VkMDJjY2I4Y2RmMTUwOWYyYmEiLCJuYW1lIjoiSm9zZSIsImxhc3RuYW1lIjoiUnVpeiIsImVtYWlsIjoianJAZ21haWwuY29tIiwicGhvbmUiOiIzMTAwMDUwMCIsInVzZXJuYW1lIjoialJ1aXoiLCJyb2xlIjoiQ0xJRU5UIiwiaWF0IjoxNjU1NzQ2OTMxLCJleHAiOjE2NTU3NjQ5MzF9.Vckr9SnOY64Ymu7VGR6lFy7lXzpl1CCoOXZOYY1VirY\"",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Hector",
+									"type": "default"
+								},
+								{
+									"key": "lastname",
+									"value": "Ruiz",
+									"type": "default"
+								},
+								{
+									"key": "email",
+									"value": "jr@gmail.com",
+									"type": "default"
+								},
+								{
+									"key": "phone",
+									"value": "31000500",
+									"type": "default"
+								},
+								{
+									"key": "username",
+									"value": "jGodoy",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3000/client/updateClient/62abced02ccb8cdf1509f2ba",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"client",
+								"updateClient",
+								"62abced02ccb8cdf1509f2ba"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Admin",
+			"item": [
+				{
+					"name": "Create Admin",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "\"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2MmFiZWYxOGY0YjJiMjFhMWI5MmRiNWIiLCJuYW1lIjoiQWxleCIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY1NTQzNTEyMCwiZXhwIjoxNjU1NDUzMTIwfQ.hntFPaZNZvB0ZBh7ry-8qp-oQW4paV5Q18RAlQ8OtCw\"",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Super Admin",
+									"type": "default"
+								},
+								{
+									"key": "username",
+									"value": "ADMIN",
+									"type": "default"
+								},
+								{
+									"key": "password",
+									"value": "123",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3000/admin/createAdmin",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"admin",
+								"createAdmin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Hotel",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "\"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2MmFiZWYxOGY0YjJiMjFhMWI5MmRiNWIiLCJuYW1lIjoiQWxleCIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY1NTQzNTEyMCwiZXhwIjoxNjU1NDUzMTIwfQ.hntFPaZNZvB0ZBh7ry-8qp-oQW4paV5Q18RAlQ8OtCw\"",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Josue Monzón",
+									"type": "default"
+								},
+								{
+									"key": "username",
+									"value": "jMonzon",
+									"type": "default"
+								},
+								{
+									"key": "password",
+									"value": "123",
+									"type": "default"
+								},
+								{
+									"key": "nameHotel",
+									"value": "Camino Real",
+									"type": "default"
+								},
+								{
+									"key": "direction",
+									"value": "Zona 4 de Guatemala",
+									"type": "default"
+								},
+								{
+									"key": "phone",
+									"value": "12345678",
+									"type": "default"
+								},
+								{
+									"key": "email",
+									"value": "camino@gmail.com",
+									"type": "default"
+								},
+								{
+									"key": "idManager",
+									"value": "",
+									"type": "default",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3000/admin/createHotel",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"admin",
+								"createHotel"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getManagersAndClients",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2MmFhNzA0ZTdmOGJlMGI1ZmNiMDBiMjEiLCJuYW1lIjoiU3VwZXIgQWRtaW4iLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE2NTUzOTg3MDQsImV4cCI6MTY1NTQxNjcwNH0.l5uS4gsE_8YYyewJjHDsCiTlznqHFQImkozouatGN5k",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "localhost:3000/admin/getManagersAndClients",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"admin",
+								"getManagersAndClients"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Manager",
+			"item": [
+				{
+					"name": "Create Room",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2MmFiN2FlOTdmZDg2ZmJlNzU2MTEzYzgiLCJuYW1lIjoiSm9zdWUgTW9uesOzbiIsInJvbGUiOiJNQU5BR0VSIiwiaWF0IjoxNjU1NDA1MzgzLCJleHAiOjE2NTU0MjMzODN9.EGstnEvfDYXBkwl6PlxvdYCYYz7w6rNUSiRPaYsHka4",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Suit Presidencial 1",
+									"type": "default"
+								},
+								{
+									"key": "type",
+									"value": "VIP",
+									"type": "default"
+								},
+								{
+									"key": "price",
+									"value": "1500",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3000/manager/createRoom/62ab7ae97fd86fbe756113ca",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"manager",
+								"createRoom",
+								"62ab7ae97fd86fbe756113ca"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Event",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "\"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2MmFiY2VlYTJjY2I4Y2RmMTUwOWYyYmQiLCJuYW1lIjoiQWxleCIsInJvbGUiOiJNQU5BR0VSIiwiaWF0IjoxNjU1NzQ3MTMzLCJleHAiOjE2NTU3NjUxMzN9.1XMdHZqAaw9IpfhgMth7HCZnFndjZOtyXoU7BEUEUIo\"",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Beer Pong",
+									"type": "default"
+								},
+								{
+									"key": "type",
+									"value": "Bolos",
+									"type": "default"
+								},
+								{
+									"key": "description",
+									"value": "Ponerse bolos",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3000/manager/createEvent/62abefacf4b2b21a1b92db67",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"manager",
+								"createEvent",
+								"62abefacf4b2b21a1b92db67"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Event",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "\"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2MmFiY2VlYTJjY2I4Y2RmMTUwOWYyYmQiLCJuYW1lIjoiQWxleCIsInJvbGUiOiJNQU5BR0VSIiwiaWF0IjoxNjU1NzQ3MTMzLCJleHAiOjE2NTU3NjUxMzN9.1XMdHZqAaw9IpfhgMth7HCZnFndjZOtyXoU7BEUEUIo\"",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Fuchibol",
+									"type": "default"
+								},
+								{
+									"key": "type",
+									"value": "Deportivo",
+									"type": "default"
+								},
+								{
+									"key": "description",
+									"value": "Torneos de fuchibol",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3000/manager/updateEvent/62b0b2604e15181e6810ed23",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"manager",
+								"updateEvent",
+								"62b0b2604e15181e6810ed23"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Event",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "\"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2MmFiY2VlYTJjY2I4Y2RmMTUwOWYyYmQiLCJuYW1lIjoiQWxleCIsInJvbGUiOiJNQU5BR0VSIiwiaWF0IjoxNjU1NzQ3MTMzLCJleHAiOjE2NTU3NjUxMzN9.1XMdHZqAaw9IpfhgMth7HCZnFndjZOtyXoU7BEUEUIo\"",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "localhost:3000/manager/deleteEvent/62abf2c8f4b2b21a1b92db80",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"manager",
+								"deleteEvent",
+								"62abf2c8f4b2b21a1b92db80"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Service",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "\"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2MmFiY2VlYTJjY2I4Y2RmMTUwOWYyYmQiLCJuYW1lIjoiQWxleCIsInJvbGUiOiJNQU5BR0VSIiwiaWF0IjoxNjU1NzQ3MTMzLCJleHAiOjE2NTU3NjUxMzN9.1XMdHZqAaw9IpfhgMth7HCZnFndjZOtyXoU7BEUEUIo\"",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "DESAYUNO",
+									"type": "default"
+								},
+								{
+									"key": "price",
+									"value": "50",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3000/manager/createService/62abefacf4b2b21a1b92db67",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"manager",
+								"createService",
+								"62abefacf4b2b21a1b92db67"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Service",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "\"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2MmFiY2VlYTJjY2I4Y2RmMTUwOWYyYmQiLCJuYW1lIjoiQWxleCIsInJvbGUiOiJNQU5BR0VSIiwiaWF0IjoxNjU1NzQ3MTMzLCJleHAiOjE2NTU3NjUxMzN9.1XMdHZqAaw9IpfhgMth7HCZnFndjZOtyXoU7BEUEUIo\"",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Almuerzo",
+									"type": "default"
+								},
+								{
+									"key": "price",
+									"value": "80",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3000/manager/updateService/62b0b39e4e15181e6810ed2b",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"manager",
+								"updateService",
+								"62b0b39e4e15181e6810ed2b"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Service",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "\"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2MmFiY2VlYTJjY2I4Y2RmMTUwOWYyYmQiLCJuYW1lIjoiQWxleCIsInJvbGUiOiJNQU5BR0VSIiwiaWF0IjoxNjU1NzQ3MTMzLCJleHAiOjE2NTU3NjUxMzN9.1XMdHZqAaw9IpfhgMth7HCZnFndjZOtyXoU7BEUEUIo\"",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Almuerzo",
+									"type": "default",
+									"disabled": true
+								},
+								{
+									"key": "price",
+									"value": "80",
+									"type": "default",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3000/manager/deleteService/62b0b4c12aa7e0919384f477",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"manager",
+								"deleteService",
+								"62b0b4c12aa7e0919384f477"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Hotel",
+			"item": [
+				{
+					"name": "Get Hotels",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2MmFhNzA0ZTdmOGJlMGI1ZmNiMDBiMjEiLCJuYW1lIjoiU3VwZXIgQWRtaW4iLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE2NTUzOTg3MDQsImV4cCI6MTY1NTQxNjcwNH0.l5uS4gsE_8YYyewJjHDsCiTlznqHFQImkozouatGN5k",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "localhost:3000/admin/getHotels",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"admin",
+								"getHotels"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get rooms",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2MmFiN2FlOTdmZDg2ZmJlNzU2MTEzYzgiLCJuYW1lIjoiSm9zdWUgTW9uesOzbiIsInJvbGUiOiJNQU5BR0VSIiwiaWF0IjoxNjU1NDA1MzgzLCJleHAiOjE2NTU0MjMzODN9.EGstnEvfDYXBkwl6PlxvdYCYYz7w6rNUSiRPaYsHka4",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "localhost:3000/hotel/getRooms/62ab7ae97fd86fbe756113ca",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"hotel",
+								"getRooms",
+								"62ab7ae97fd86fbe756113ca"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get avaible rooms",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2MmFiN2FlOTdmZDg2ZmJlNzU2MTEzYzgiLCJuYW1lIjoiSm9zdWUgTW9uesOzbiIsInJvbGUiOiJNQU5BR0VSIiwiaWF0IjoxNjU1NDA1MzgzLCJleHAiOjE2NTU0MjMzODN9.EGstnEvfDYXBkwl6PlxvdYCYYz7w6rNUSiRPaYsHka4",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "localhost:3000/hotel/getAvaibleRooms/62ab7ae97fd86fbe756113ca",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"hotel",
+								"getAvaibleRooms",
+								"62ab7ae97fd86fbe756113ca"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Event",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "\"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2MmFiY2VlYTJjY2I4Y2RmMTUwOWYyYmQiLCJuYW1lIjoiQWxleCIsInJvbGUiOiJNQU5BR0VSIiwiaWF0IjoxNjU1NzQ3MTMzLCJleHAiOjE2NTU3NjUxMzN9.1XMdHZqAaw9IpfhgMth7HCZnFndjZOtyXoU7BEUEUIo\"",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "localhost:3000/hotel/getEvent/62b0b2604e15181e6810ed23",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"hotel",
+								"getEvent",
+								"62b0b2604e15181e6810ed23"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Events",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "\"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2MmFiY2VlYTJjY2I4Y2RmMTUwOWYyYmQiLCJuYW1lIjoiQWxleCIsInJvbGUiOiJNQU5BR0VSIiwiaWF0IjoxNjU1NzQ3MTMzLCJleHAiOjE2NTU3NjUxMzN9.1XMdHZqAaw9IpfhgMth7HCZnFndjZOtyXoU7BEUEUIo\"",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "localhost:3000/hotel/getEvents/62abefacf4b2b21a1b92db67",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"hotel",
+								"getEvents",
+								"62abefacf4b2b21a1b92db67"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "username",
+							"value": "Ragox",
+							"type": "default"
+						},
+						{
+							"key": "password",
+							"value": "123",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:3000/admin/login",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"admin",
+						"login"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
