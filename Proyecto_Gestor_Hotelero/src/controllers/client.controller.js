@@ -59,7 +59,7 @@ exports.updateClient = async(req, res)=>{
         if(msg){
             return res.send(msg);
         }else{
-            if(client.username != params.username){
+            if(client.username != data.username){
                 const clientFound = await Client.findOne({username: params.username}) 
                 if(clientFound){
                     return res.status(400).send({message: 'This username already exist.'});
@@ -76,5 +76,15 @@ exports.updateClient = async(req, res)=>{
     }catch (err) {
         console.log(err);
         return err;   
+    }
+}
+
+//FUNCIÓN PARA REALIZAR UNA RESERVACIÓN
+exports.reservation = async (req, res) => {
+    try {
+        
+    } catch (err) {
+        console.log(err);
+        return err;
     }
 }

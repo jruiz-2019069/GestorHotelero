@@ -10,6 +10,7 @@ api.post("/createAdmin", [middleware.isLoged, middleware.isAdmin], adminControll
 api.post("/createHotel", [middleware.isLoged, middleware.isAdmin], adminController.createHotel);
 api.get("/getHotels", middleware.isLoged, adminController.getHotels);
 api.get("/getManagersAndClients", [middleware.isLoged, middleware.isAdmin], adminController.getManagersAndClients);
-
+api.put("/updateHotel/:idHotel", [middleware.isLoged, middleware.isAdmin], adminController.updateHotel);
+api.put("/updateManager/:idManager", [middleware.isLoged, middleware.isAdmin], adminController.updateManager);
 
 module.exports = api;

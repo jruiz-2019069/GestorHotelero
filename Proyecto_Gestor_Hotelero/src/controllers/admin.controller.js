@@ -146,3 +146,71 @@ exports.getHotels = async (req, res) => {
         return err;
     }
 }
+
+//FUNCIÓN PARA EDITAR UN HOTEL
+exports.updateHotel = async (req, res) => {
+    try {
+        const params = req.body;
+        const idHotel = req.params.idHotel;
+        const data = {
+            nameHotel: params.nameHotel.toUpperCase(),
+            direction: params.direction,
+            phone: params.phone,
+            email: params.email
+        }
+        const hotelFound = await Hotel.findOne({_id: idHotel});
+        const msg = await dataObligatory(data);
+        if(msg){
+            return res.status(400).send(msg);
+        }else{
+            if(hotelFound.nameHotel != data.nameHotel){
+                const nameHotel = await Hotel.findOne({nameHotel: data.nameHotel});
+                if(nameHotel){
+                    return res.status(400).send({message: "The name of this hotel already exist."});
+                }else{
+                    const hotelUpdated = await Hotel.findOneAndUpdate({_id: idHotel}, data, {new: true});
+                    return res.status(200).send({message: "Hotel updated succesfully.", hotelUpdated});
+                }
+            }else{
+                const hotelUpdated = await Hotel.findOneAndUpdate({_id: idHotel}, data, {new: true});
+                return res.status(200).send({message: "Hotel updated succesfully.", hotelUpdated});
+            }
+        }
+    } catch (err) {
+        console.log(err);
+        return err;
+    }
+}
+
+//FUNCIÓN PARA EDITAR UN MANAGER
+exports.updateManager = async (req, res) => {
+    try {
+        const params = req.body;
+        const idManager = req.params.idManager;
+        const data = {
+            name: params.name,
+            username: params.username
+        }
+        const msg = await dataObligatory(data);
+        if(msg){
+            return res.status(400).send(msg);
+        }else{
+            const manager = await Manager.findOne({_id: idManager});
+            if(manager.username === data.username){
+                const managerUpdated = await Manager.findOneAndUpdate({_id: idManager}, data, {new: true});
+                return res.status(200).send({message: "Manager updated successfully.", managerUpdated});
+            }else{
+                const userManager = await Manager.findOne({username: data.username});
+                if(userManager){
+                    return res.status(400).send({message: "This username already exist."});
+                }else{
+                    const managerUpdated = await Manager.findOneAndUpdate({_id: idManager}, data, {new: true});
+                    return res.status(200).send({message: "Manager updated successfully.", managerUpdated});
+                }
+            }
+        }
+    } catch (err) {
+        console.log(err);
+        return err;
+    }
+}

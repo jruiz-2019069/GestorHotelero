@@ -82,7 +82,7 @@ exports.updateEvent = async(req, res) =>{
         if(msg){
             return res.send(msg);
         }else{
-            if(event.name != params.name){
+            if(event.name != data.name){
                 const eventFound = await Event.findOne({idHotel: event.idHotel ,name: params.name.toUpperCase()});
                 if(eventFound){
                     return res.status(400).send({message:'Event name already exists'});
