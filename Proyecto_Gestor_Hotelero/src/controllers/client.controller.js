@@ -28,7 +28,7 @@ exports.register = async(req, res)=>{
         }else{
             const usernameFound = await Client.findOne({username: params.username});
             if(usernameFound){
-                return res.send({message: 'This username already exist.'});
+                return res.status(400).send({message: 'This username already exist.'});
             }else{
                 data.password = await encryptPassword(params.password);
                 let client = new Client(data);
