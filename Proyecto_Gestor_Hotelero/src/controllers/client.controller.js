@@ -33,7 +33,7 @@ exports.register = async(req, res)=>{
                 data.password = await encryptPassword(params.password);
                 let client = new Client(data);
                 await client.save();
-                return res.status(200).send({message: 'Client created succesfullly.'});
+                return res.status(200).send({message: 'Account created successfully'});
             }
         }
     }catch(err){
